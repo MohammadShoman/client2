@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import WorkingHour from "./workingHour.vue";
+import WorkingHour from "./WorkingHour.vue";
 export default {
   props: { value: String },
   components: { WorkingHour },

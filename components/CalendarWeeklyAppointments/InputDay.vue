@@ -11,7 +11,7 @@
       <span class="check-box-custom"></span>
       <label class="checkbox-label"> {{ day }} </label>
       <div class="from-to">
-        <input class="time" type="time" name="time" @input="handleInputFrom"/>
+        <input class="time" type="time" name="time" @input-From="handleInputFrom"/>
         To
         <input class="time" type="time" name="time" @input="handleInputTo" />
       </div>
@@ -32,15 +32,15 @@ export default {
   methods: {
     handleInputDay(e) {
       console.log(e.target.value);
-      this.$emit("inputDay", e.target.value);
+      this.$emit("input-Day", e.target.value);
     },
     handleInputFrom(e) {
       console.log(e.target.value);
-      this.$emit("inputFrom", e.target.value);
+      this.$emit("input-From", e.target.value);
     },
     handleInputTo(e) {
       console.log(e.target.value);
-      this.$emit("inputTo", e.target.value);
+      this.$emit("input-To", e.target.value);
     },
   },
 };

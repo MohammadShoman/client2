@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Filters from "./filters";
+import Filters from "./Filters";
 import RightComponents from "./RightComponents.vue";
 import Header from "./Header.vue";
 import MiddleCalendar from "./MiddleCalendar.vue";

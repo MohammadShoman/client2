@@ -5,7 +5,7 @@
     </div>
     <div class="body-working-hours">
       <InputDay  day="sun"/> 
-      <InputDay  day="mon" @emit="inputFrom"/> 
+      <InputDay  day="mon" @input-From="handleInput"/> 
       <InputDay  day="tue"/> 
       <InputDay  day="wed"/> 
       <InputDay  day="tue"/> 
@@ -33,11 +33,15 @@ export default {
       ],
     };
   },
+
   components:{
     InputDay,
   },
    methods: {
-    
+    handleInput(e) {
+      console.log(e,"kkkkk");
+      this.$emit("input-From");
+    },
   },
 };
 </script>

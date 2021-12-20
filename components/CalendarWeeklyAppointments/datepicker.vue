@@ -8,15 +8,15 @@
         <Datefrom :value="to" />
       </div>
     </div>
-    <div class="a">Kindly fill the information below</div>
-    <WorkingHour v-model="from" />
+    <div @click="a" class="a">Kindly fill the information below</div>
+    <WorkingHour @handleInput="from" />
     {{from}}
     {{to}}
   </div>
 </template>
 <script>
 import Datefrom from "./Datefrom.vue";
-import WorkingHour from "./workingHour.vue";
+import WorkingHour from "./WorkingHour.vue";
 export default {
   data() {
     return {
@@ -32,6 +32,9 @@ export default {
     WorkingHour,
   },
   methods: {
+    a(){
+      console.log(this.from); 
+    },
     getToken() {
       this.$store.dispatsh("workingHour", {
         objectOfDays:{},
