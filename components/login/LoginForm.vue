@@ -7,7 +7,7 @@
         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
         <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
       </div>
-      <input type="email" v-model="email" placeholder="Email" />
+      <input type="username" v-model="username" placeholder="username" />
       <input type="password" v-model="password" placeholder="Password" />
       <a href="/forgotPassword">Forgot your password?</a>
       <button @click.prevent="login" class="second-button">Sign In</button>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       fullName: "",
-      email: "",
+      username: "",
       password: "",
     };
   },
@@ -30,7 +30,7 @@ export default {
     login() {
       this.$store
         .dispatch("LOGIN", {
-          email: this.email,
+          username: this.username,
           password: this.password,
         })
         .then((success) => {

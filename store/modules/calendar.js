@@ -10,6 +10,7 @@ const Calendar = {
     type: "doctors",
     dailyDate: "",
     lang: "ar",
+
   },
 
   mutations: {
@@ -75,6 +76,19 @@ const Calendar = {
     },
     getDailyDate(context, payload) {
       context.commit("changeDailyDate", { dailyDate: payload.dailyDate });
+    },
+    async workingHour(context, payload) {
+      try {
+        const result = await axios.post(
+          "https://services.agentsoncloud.com/workingHours",
+          payload
+        );
+        console.log(result);
+      } catch (err) {
+        console.log(err.response.data.message);
+        console.log(err.response.status);
+        
+      }
     },
   },
   getters: {
