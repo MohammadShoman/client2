@@ -4,36 +4,40 @@
       <h5>Select your working days</h5>
     </div>
     <div class="body-working-hours">
-      <label class="days-container" :key="index" v-for="(day, index) in days">
-        <input type="checkbox" id="checkboxes" />
-        <span class="check-box-custom"></span>
-        <label class="checkbox-label"> {{ day }}</label>
-        <div class="from-to">
-          <input class="time" type="time" name="time"
-          
-           />
-          To
-          <input class="time" type="time" name="time" />
-        </div>
-      </label>
+      <InputDay  day="sun"/> 
+      <InputDay  day="mon" @emit="inputFrom"/> 
+      <InputDay  day="tue"/> 
+      <InputDay  day="wed"/> 
+      <InputDay  day="tue"/> 
+      <InputDay  day="fri"/> 
+      <InputDay  day="sat"/> 
+        
+      
     </div>
   </div>
 </template>
 
 <script>
+import InputDay from  "./InputDay.vue"
 export default {
   data() {
     return {
       days: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
+        "sun",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
       ],
     };
+  },
+  components:{
+    InputDay,
+  },
+   methods: {
+    
   },
 };
 </script>

@@ -6,6 +6,7 @@ const Login = {
     message: "",
     forgetMessage: "",
     phoneNumber: "", 
+    tokenId:"",
   },
   actions: {
     async LOGIN(context, payload) {
@@ -14,7 +15,13 @@ const Login = {
           "https://services.agentsoncloud.com/login",
           payload
         );
-        this.$router.push("/weeklyappointments");
+        if(result.data.firstTime){
+          this.$router.push("/");
+        }else{
+          this.$router.push("/weeklyappointments");
+
+        }
+        
         document.cookie = `token=${result.data.token}`;
         console.log(result);
       } catch (err) {
@@ -32,9 +39,9 @@ const Login = {
         );
         console.log(result);
         console.log(result.data.token);
-        const token = result.data.token;
         const decoded = jwt.verify(token,"change this key later on 00");
         context.state.phoneNumber = decoded.phone;
+        context.state.tokenId=decoded.id
         console.log(context.state.phoneNumber);
         this.$router.push("/forgetCode");
       } catch (err) {
@@ -84,6 +91,9 @@ const Login = {
     getPhoneNumber(state) {
       return state.phoneNumber;
     },
+    getTokenId(state){
+      return state.token
+    }
   },
 };
 export default Login;

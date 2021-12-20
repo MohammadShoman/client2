@@ -13,17 +13,13 @@
         day: 'numeric',
       }"
     ></b-form-datepicker>
+    {{value}}
   </div>
 </template>
 <script>
 import WorkingHour from "./workingHour.vue";
 export default {
-  data() {
-    return {
-      value: "",
-    };
-  },
-  props: {},
+  props: { value: String },
   components: { WorkingHour },
 };
 </script>

@@ -2,23 +2,44 @@
   <div class="allparts">
     <h5 class="duration">Select dates to define work duration</h5>
     <div class="date-picker1">
-      <div class="part1"><Datefrom /></div>
+      <div class="part1"><Datefrom :value="from" /></div>
       <div>To</div>
       <div class="part2">
-        <Datefrom />
+        <Datefrom :value="to" />
       </div>
     </div>
     <div class="a">Kindly fill the information below</div>
-    <WorkingHour />
+    <WorkingHour v-model="from" />
+    {{from}}
+    {{to}}
   </div>
 </template>
 <script>
 import Datefrom from "./Datefrom.vue";
 import WorkingHour from "./workingHour.vue";
 export default {
+  data() {
+    return {
+      from: "",
+      to: "",
+      day1:"",
+      timeFrom:"",
+      timeTo:""
+    };
+  },
   components: {
     Datefrom,
     WorkingHour,
+  },
+  methods: {
+    getToken() {
+      this.$store.dispatsh("workingHour", {
+        objectOfDays:{},
+        fromDate: this.from,
+        toDate: this.to,
+        userId: this.store.getters.getTokenId,
+      });
+    },
   },
   props: {},
 };
@@ -29,13 +50,12 @@ export default {
   text-align: center;
   color: white;
   width: 70%;
-  height:50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px auto;
-  border-radius:5px;
-
+  border-radius: 5px;
 }
 body {
   font-family: "Roboto", sans-serif;
